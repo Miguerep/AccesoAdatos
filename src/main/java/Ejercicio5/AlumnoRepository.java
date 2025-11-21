@@ -2,6 +2,7 @@ package Ejercicio5;
 
 import jakarta.persistence.*;
 
+import java.sql.*;
 import java.util.List;
 
 public class AlumnoRepository {
@@ -28,28 +29,47 @@ public class AlumnoRepository {
             }
             System.err.println("Error al insertar: " + e.getMessage());
             e.printStackTrace();
-        }   finally {
+        } finally {
             em.close();
         }
     }
+
     public List<alumno> listar() {
         EntityManager em = emf.createEntityManager();
         List<alumno> alumnos = null;
 
-        try{
+        try {
             TypedQuery<alumno> query = em.createQuery("from alumno", alumno.class);
             alumnos = query.getResultList();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.err.println("Error al listar: " + e.getMessage());
             e.printStackTrace();
-        }finally{
+        } finally {
             em.close();
         }
         return alumnos;
     }
 
-    public void cerrar(){
-        if(emf != null && emf.isOpen()){
+    public void mostrarJSON() {
+        String url = "jdbc:mysql://localhost:3306/escuela";
+        String user = "root";
+        String password = "root";
+        String sql = "select nombre, JSON_EXTRACT(datos, '$.curso') AS curso from alumno";
+        try (Connection con =  DriverManager.getConnection(url, user, password)){
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println("Nombre: " + rs.getString("nombre") + " Curso: " + rs.getString("curso"));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al conectar: " + e.getMessage());
+        }
+
+    }
+
+    public void cerrar() {
+        if (emf != null && emf.isOpen()) {
             emf.close();
         }
     }
