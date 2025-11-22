@@ -7,15 +7,15 @@ public class Main {
     public static void main(String[] args) {
 
         AlumnoRepository ar = new AlumnoRepository();
-        List<alumno> alumnos = new ArrayList<alumno>();
+        List<alumno> alumnos = new ArrayList<>();
 
-//        alumnos.add(new alumno(21, "Jose"));
-//        alumnos.add(new alumno(14, "mario"));
-//        alumnos.add(new alumno(18, "pepe"));
-//
-//        for (alumno a : alumnos) {
-//            ar.insertar(a);
-//        }
+        alumnos.add(new alumno(21, "Jose"));
+        alumnos.add(new alumno(14, "mario"));
+        alumnos.add(new alumno(18, "pepe"));
+
+        for (alumno a : alumnos) {
+            ar.insertar(a);
+        }
 
         List<alumno> listarAlumnos = ar.listar();
 
@@ -23,10 +23,8 @@ public class Main {
             System.out.println(a);
         }
 
-
-        System.out.println("\nMOSTRANDO JSON.....\n");
-        ar.mostrarJSON();
-
         ar.cerrar();
+
+
     }
 }
