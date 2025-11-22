@@ -10,7 +10,7 @@ public class AlumnoDAO {
     private final String password = "root";
 
     public void insertar(String nombre, int edad) {
-            String sql = "INSERT INTO escuela VALUES (?, ?)";
+            String sql = "INSERT INTO alumno VALUES (?, ?)";
 
         try (Connection conn = DriverManager.getConnection(URL, user, password)){
             PreparedStatement ps = conn.prepareStatement(sql);
