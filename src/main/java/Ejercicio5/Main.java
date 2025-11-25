@@ -9,9 +9,9 @@ public class Main {
         AlumnoRepository ar = new AlumnoRepository();
         List<alumno> alumnos = new ArrayList<>();
 
-        alumnos.add(new alumno(21, "Jose"));
-        alumnos.add(new alumno(14, "mario"));
-        alumnos.add(new alumno(18, "pepe"));
+        alumnos.add(new alumno("Jose", 21));
+        alumnos.add(new alumno("mario",14));
+        alumnos.add(new alumno("pepe",18));
 
         for (alumno a : alumnos) {
             ar.insertar(a);

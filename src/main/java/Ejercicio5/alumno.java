@@ -18,9 +18,9 @@ public class alumno {
 
         }
 
-        public alumno(Integer edad, String nombre) {
-            this.edad = edad;
+        public alumno(String nombre, int edad) {
             this.nombre = nombre;
+            this.edad = edad;
         }
 
         public String getNombre() {

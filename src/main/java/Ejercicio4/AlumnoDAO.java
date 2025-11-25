@@ -14,8 +14,8 @@ public class AlumnoDAO {
 
         try (Connection conn = DriverManager.getConnection(URL, user, password)){
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, nombre);
-            ps.setInt(2, edad);
+            ps.setString(2, nombre);
+            ps.setInt(1, edad);
             ps.executeUpdate();
 
 
@@ -25,7 +25,7 @@ public class AlumnoDAO {
     }
 
     public List<String> listar() {
-        String sql = "SELECT * FROM escuela";
+        String sql = "SELECT * FROM alumno";
         List<String> lista = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(URL, user, password)){
